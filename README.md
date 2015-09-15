@@ -1,4 +1,4 @@
-# Project 05: Word-Guess Game
+# Word-Guess Game
 
 Create a game which will allow the user to guess a word and get ASCII-art as feedback on their guesses.
 
