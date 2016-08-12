@@ -2,6 +2,14 @@
 
 Create a game which will allow the user to guess a word and get ASCII-art as feedback on their guesses.
 
+### Learning Goals:
+- Create a complex program from start to finish
+- Use at least one class to encapsulate game functionality
+- Use methods to encapsulate repeated sections of code
+- Use instance variables and local variables where appropriate
+- Use arrays to store information where appropriate
+- Use variables to allow the game to be played with different words
+
 ### The Rules:
 The word to guess is represented by a row of dashes, giving the number of letters. If the guess is a letter or number which occurs in the word, the word should be updated in all of the correct positions. If the suggested letter or number does not occur in the word, the game should draw or remove one element of the visual representation as a tally mark. The game is over when:
   - The player completes the word, or guesses the whole word correctly
