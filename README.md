@@ -37,6 +37,7 @@ word: _ O _ D O _
 - The user should be able to input a single letter at a time.
 - Between each guess, the board should be redrawn to the terminal output (Ascii art!).
 - Display the letters that have already been guessed before each player guesses a new letter.
+- The user should be able to win or lose.
 
 ### Technical
 - You should be able to play your game by running it using `ruby` from the terminal.
