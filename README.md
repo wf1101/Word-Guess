@@ -27,10 +27,22 @@ For example:
 word: _ O _ D O _
 ```
 
-## Baseline
-- Determine what type of ASCII art your team would like to utilize - be creative!
-- Think through how you think you should structure your code. Your code should utilize class(es) and methods to keep functionality contained.
-- Create a program that will accept one user guess input and print it out in the terminal.
+## Baseline Discussion
+### Phase 1
+We can use our understanding of grammar to help us design programs. We will examine our problem space and identify the grammar we use when we describe the problem. **Nouns** are things you can touch, see, smell, taste, or feel. A **verb** is an action. For example, let's say we are describing a problem with a traveling animal: A dog (noun) runs (verb) on four feet (noun).
+
+For this particular word guess problem, create the list of **nouns** and **verbs** that you would utilize in describing this problem. 
+
+### Phase 2
+Use your list of **nouns** to begin thinking about what classes you might want to use. Use your list of **verbs** associated with **nouns** to consider what methods you need to put in which classes. This brainstorming process is not a failproof approach, but rather a starting point.
+
+You can review some [additional documentation](https://wbsimms.com/programming-nouns-verbs/) on this approach if you'd like some additional context.
+
+## Baseline Code
+1. **One** person in your pair shall `fork` the repository in GitHub
+1. **One** person in your pair shall `git clone` the repository to their computer
+1. Create a program that will accept one user guess input and print it out in the terminal
+1. Use the git `add`, `commit` and `push` commands to push the initial program to GitHub
 
 ## Primary Requirements
 ### Game play
