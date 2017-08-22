@@ -8,7 +8,6 @@
 |  Readable code with consistent indentation. 	|   	|
 |  Answered comprehension questions  |    |
 |   **Product Functionalities**	|   	|
-|   Both Teammates contributed to the codebase.	|   	|
 |   Created a Class to encapsulate game functionality.	|   	|
 |   Used methods to DRY up your code.	|   	|
 |   Created instance variables & local variables where appropriate.	|   	|
