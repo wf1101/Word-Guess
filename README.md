@@ -61,3 +61,6 @@ You can review some [additional documentation](https://wbsimms.com/programming-n
 - Ensure the user is not penalized for guessing the same letter more than once.
 - Allow the user to choose their difficulty level: higher levels will have words or phrases with more letters. You determine the specific logic that will determine a low, medium, high level.
 - Allow the program to accept the whole word as input from the user. If the word is guessed correctly, the user will win. Otherwise, it will be treated as another guess.
+
+## What Intructors Are Looking For
+Check out the [feedbacktemplate](feedback.md) which lists the items instructors will be looking for as they evaluate your project.
