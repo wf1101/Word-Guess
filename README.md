@@ -63,4 +63,4 @@ You can review some [additional documentation](https://wbsimms.com/programming-n
 - Allow the program to accept the whole word as input from the user. If the word is guessed correctly, the user will win. Otherwise, it will be treated as another guess.
 
 ## What Intructors Are Looking For
-Check out the [feedbacktemplate](feedback.md) which lists the items instructors will be looking for as they evaluate your project.
+Check out the [feedback template](feedback.md) which lists the items instructors will be looking for as they evaluate your project.
