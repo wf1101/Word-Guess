@@ -4,7 +4,7 @@
 
 - Create a game which will allow the user to guess a word and get ASCII-art as feedback on their guesses.
 - [Stage 2](https://github.com/Ada-Developers-Academy/pedagogy/blob/master/rule-of-three.md#stage-2) pair project
-- Due before class, **DATE HERE**
+- Due before class February 14th.
 
 ## Learning Goals:
 - Create a complex program from start to finish
