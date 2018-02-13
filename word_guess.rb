@@ -2,22 +2,19 @@
 require "colorize"
 require "spicy-proton"
 
-
 class WordGuess
-  attr_reader :word_array, :display_array, :word_string, :user_guesses
+  attr_reader :word_array, :display_array, :word, :user_guesses
   # use faker to get a word or word bank
   def initialize
-    word = Spicy::Proton.noun
+    @word = Spicy::Proton.noun(min:5)
     @word_array = word.split("")
     @display_array = Array.new(word.length, "_")
     @candles = Array.new(5, ",")
     @user_guesses = []
-    @word_string = word
     @cake = "\t   _|||||_ \n\t  {~*~*~*~}\n\t__{*~*~*~*}__\n\t-------------"
-    @winner_cake = "\t   _______ \n\t  {~*~*~*~}\n\t__{*~*~*~*}__\n\t-------------"
   end
 
-  def print_display
+  def display
     display = "\n The word to guess: "
     @display_array.each do |letter|
       display += "#{letter} "
@@ -38,7 +35,7 @@ class WordGuess
     @display_array[-1] = @word_array[-1]
   end
 
-  def print_picture
+  def picture
     picture = "\t    "
     @candles.each do |flame|
       picture += "#{flame}".colorize(:red)
@@ -50,7 +47,7 @@ class WordGuess
   def check_guess(user_input)
     # Case 1: user guess a word
     if user_input.length > 1
-      if user_input == @word_string
+      if user_input == @word
         @display_array = @word_array
       else
         @candles.delete_at(-1)
@@ -74,9 +71,9 @@ class WordGuess
 
   def game_over?
     if won?
-      return "Congralations! YOU WIN!!! \nThe word was: #{@word_string.upcase.colorize(:blue)}\n\n             🍴 🍰\n#{@winner_cake}\n\nYou get to eat the cake!\n\n"
+      return "Congralations! YOU WIN!!! \nThe word was: #{@word.upcase.colorize(:blue)}\n\n             🍴 🍰\n#{@cake.gsub("|", "_")}\n\nYou get to eat the cake!\n\n"
     elsif lost?
-      return "\n\nYou LOSE! Sorry 😢  😢  😢  😢  😢\n\n#{@cake} \nThe word was: #{@word_string.upcase.colorize(:red)} "
+      return "\n\nYou LOSE! Sorry 😢  😢  😢  😢  😢\n\n#{@cake} \nThe word was: #{@word.upcase.colorize(:red)} "
     else
       return nil
     end
@@ -103,8 +100,8 @@ end
 def status(game)
   if !game.game_over?
     puts "Status".center(40,"=")
-    puts game.print_display
-    puts game.print_picture
+    puts game.display
+    puts game.picture
     puts game.user_guesses
   end
 end
@@ -115,7 +112,6 @@ end
 
 puts "Our Word Game is a piece of cake!".center(40, "=")
 puts "\nDirections: Guess one letter or the entire word at a time to try to solve the word puzzle. Each wrong guess will extinguish one candle one the cake. But if you guess the word before they all do, you get to eat the cake! Good luck!!!\n\n"
-
 
 flag = true
 
@@ -148,7 +144,7 @@ while flag
     puts "Guess a letter: "
     guess = gets.chomp.downcase
 
-    until is_a_letter?(guess) && !(new_game.guessed?(guess)) && (guess.length == 1 || guess.length == new_game.word_string.length)
+    until is_a_letter?(guess) && !(new_game.guessed?(guess)) && (guess.length == 1 || guess.length == new_game.word.length)
 
       if new_game.guessed?(guess)
         puts "You've already tried #{guess}. Please enter another guess: "
@@ -174,7 +170,7 @@ while flag
 
 end # Flag loop
 
-puts "Thanks for playing our awesome word game!! :)"
+puts "Thanks for playing our awesome word game!!! 😃"
 
 
 
