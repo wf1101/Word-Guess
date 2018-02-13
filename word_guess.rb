@@ -1,5 +1,5 @@
 # Word_Guess Project
-# require "pry"
+require "colorize"
 class WordGuess
   attr_reader :word_array, :display_array, :word_string, :user_guesses
   # use faker to get a word or word bank
@@ -24,7 +24,7 @@ class WordGuess
   def print_picture
     picture = "\t    "
     @candles.each do |flame|
-      picture += "#{flame}"
+      picture += "#{flame}".colorize(:red)
     end
     picture += "\n#{@cake}"
     return picture
@@ -57,7 +57,7 @@ class WordGuess
 
   def game_over?
     if won?
-      return "Congralations! YOU WIN!!! The word was: #{@word_string}\n\n#{@winner_cake}\n\nYou get to eat the cake!\n\n"
+      return "Congralations! YOU WIN!!! The word was: #{@word_string.colorize(:blue)}\n\n#{@winner_cake}\n\nYou get to eat the cake!\n\n"
     elsif lost?
       return "\n\nYou LOSE! Sorry :(\n\n#{@cake}"
     else
