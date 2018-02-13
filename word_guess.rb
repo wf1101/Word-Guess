@@ -1,14 +1,13 @@
 # Word_Guess Project
 require "colorize"
-require "word_salad"
-# require "minitest/autorun"
-# require "minitest/emoji"
+require "spicy-proton"
+
 
 class WordGuess
   attr_reader :word_array, :display_array, :word_string, :user_guesses
   # use faker to get a word or word bank
   def initialize
-    word = 1.words[0]
+    word = Spicy::Proton.noun
     @word_array = word.split("")
     @display_array = Array.new(word.length, "_")
     @candles = Array.new(5, ",")
@@ -114,7 +113,7 @@ def is_a_letter?(input)
   input =~ /[a-z]/
 end
 
-puts "Our Word Game is a piece of cake!".center(40)
+puts "Our Word Game is a piece of cake!".center(40, "=")
 puts "\nDirections: Guess one letter or the entire word at a time to try to solve the word puzzle. Each wrong guess will extinguish one candle one the cake. But if you guess the word before they all do, you get to eat the cake! Good luck!!!\n\n"
 
 
