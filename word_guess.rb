@@ -26,6 +26,19 @@ class WordGuess
     return display
   end
 
+  def easy
+    @word_array.each_with_index do |letter, i|
+      if %W[a e i o u].include?(letter)
+        @display_array[i] = letter
+      end
+    end
+  end
+
+  def normal
+    @display_array[0] = @word_array[0]
+    @display_array[-1] = @word_array[-1]
+  end
+
   def print_picture
     picture = "\t    "
     @candles.each do |flame|
@@ -102,12 +115,34 @@ def is_a_letter?(input)
 end
 
 puts "Our Word Game is a piece of cake!".center(40)
-puts "\nDirections: Guess one letter or the entire word at a time to try to solve the word puzzle. Each wrong guess will extinguish one candle one the cake. But if you guess the word before they all do, you get to eat the cake! Good luck!!!\n"
+puts "\nDirections: Guess one letter or the entire word at a time to try to solve the word puzzle. Each wrong guess will extinguish one candle one the cake. But if you guess the word before they all do, you get to eat the cake! Good luck!!!\n\n"
+
 
 flag = true
 
 while flag
+  # User choose level
+  levels = %W[Easy Normal Hard]
+  puts "Level".center(40, "=")
+  puts "Please choose difficulty level: #{levels[0]} #{levels[1]} #{levels[2]}"
+
+  user_level = gets.chomp.downcase.capitalize
+  until levels.include?(user_level)
+    puts "Oops! Please choose a level: #{levels[0]} #{levels[1]} #{levels[2]}"
+    user_level = gets.chomp.downcase.capitalize
+  end
+
   new_game = WordGuess.new
+
+  # Modify display for different levels
+  case user_level
+  when "Easy"
+    new_game.easy
+  when "Normal"
+    new_game.normal
+  end
+
+  # Display beginning
   status(new_game)
 
   until new_game.game_over?
