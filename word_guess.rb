@@ -68,16 +68,16 @@ class WordGuess
   def won?
     if @display_array == @word_array
       return true
-    else
-      return false
+    # else
+    #   return false
     end
   end
 
   def lost?
     if @candles.length == 0
       return true
-    else
-      return false
+    # else
+    #   return false
     end
   end
 
@@ -142,9 +142,7 @@ while flag
 
   puts "Would you like to play another game? (yes/no)"
   user_decision = gets.chomp.downcase
-  if user_decision == "yes"
-    flag = true
-  else
+  if user_decision != "yes"
     flag = false
   end
 
