@@ -1,9 +1,14 @@
 # Word_Guess Project
 require "colorize"
+require "word_salad"
+# require "minitest/autorun"
+# require "minitest/emoji"
+
 class WordGuess
   attr_reader :word_array, :display_array, :word_string, :user_guesses
   # use faker to get a word or word bank
-  def initialize(word)
+  def initialize
+    word = 1.words[0]
     @word_array = word.split("")
     @display_array = Array.new(word.length, "_")
     @candles = Array.new(5, ",")
@@ -57,42 +62,31 @@ class WordGuess
 
   def game_over?
     if won?
-      return "Congralations! YOU WIN!!! The word was: #{@word_string.colorize(:blue)}\n\n#{@winner_cake}\n\nYou get to eat the cake!\n\n"
+      return "Congralations! YOU WIN!!! \nThe word was: #{@word_string.upcase.colorize(:blue)}\n\n             🍴 🍰\n#{@winner_cake}\n\nYou get to eat the cake!\n\n"
     elsif lost?
-      return "\n\nYou LOSE! Sorry :(\n\n#{@cake}"
+      return "\n\nYou LOSE! Sorry 😢  😢  😢  😢  😢\n\n#{@cake} \nThe word was: #{@word_string.upcase.colorize(:red)} "
     else
       return nil
     end
   end
 
   def won?
-    if @display_array == @word_array
-      return true
-    # else
-    #   return false
-    end
+    @display_array == @word_array
   end
 
   def lost?
-    if @candles.length == 0
-      return true
-    # else
-    #   return false
-    end
+    @candles.length == 0
   end
 
   def user_guesses
     return "You guesses so far: #{@user_guesses}"
   end
 
-
   def guessed?(user_input)
     @user_guesses.include?(user_input)
   end
 
 end
-
-
 
 def status(game)
   if !game.game_over?
@@ -107,15 +101,13 @@ def is_a_letter?(input)
   input =~ /[a-z]/
 end
 
-word_bank = %W[watermelon taco seattle]
-
 puts "Our Word Game is a piece of cake!".center(40)
 puts "\nDirections: Guess one letter or the entire word at a time to try to solve the word puzzle. Each wrong guess will extinguish one candle one the cake. But if you guess the word before they all do, you get to eat the cake! Good luck!!!\n"
 
 flag = true
 
 while flag
-  new_game = WordGuess.new(word_bank.sample)
+  new_game = WordGuess.new
   status(new_game)
 
   until new_game.game_over?
