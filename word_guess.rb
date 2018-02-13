@@ -1,13 +1,14 @@
 # Word_Guess Project
-
+# require "pry"
 class WordGuess
-  attr_reader :word_array, :display_array
+  attr_reader :word_array, :display_array, :word_string
   # use faker to get a word or word bank
   def initialize(word)
     @word_array = word.split("")
     @display_array = Array.new(word.length, "_")
     @flowers = Array.new(5, "<3")
     @user_guesses = []
+    @word_string = word
   end
 
   def print_display
@@ -41,6 +42,17 @@ class WordGuess
     if lost?
       puts "YOU LOSE. Sorry :("
     end
+  end
+
+  def check_word_guess(user_input)
+    if user_input == @word_string
+      @display_array = @word_array
+    end
+
+    if won?
+      puts "YOU WIN! Congratulations!"
+    end
+
   end
 
   def won?
@@ -110,13 +122,22 @@ while flag
     puts "Guess a letter: "
     guess = gets.chomp.downcase
 
-    until guess.length == 1 && is_a_letter?(guess) && !new_game.user_guesses.include?(guess)
+
+    until (guess.length == 1 || guess.length == new_game.word_string.length) && is_a_letter?(guess) && !new_game.user_guesses.include?(guess)
+
+      if guess.length == new_game.word_string.length
+         new_game.check_word_guess(guess)
+      end
+
       if new_game.user_guesses.include?(guess)
         puts "You've already tried #{guess}. Please enter another letter: "
+        guess = gets.chomp.downcase
+
       else
         puts "Sorry! Please enter only one letter: "
+        guess = gets.chomp.downcase
+
       end
-      guess = gets.chomp.downcase
 
     end
 
